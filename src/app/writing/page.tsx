@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, Tag, ArrowUpRight } from "lucide-react";
 import { getAllPosts, PostFrontMatter } from "../lib/posts";
+import Newsletter from "../components/Newsletter";
 
 export default function Writing() {
   const posts = getAllPosts();
@@ -229,12 +230,7 @@ export default function Writing() {
                 <p className="text-slate-600 leading-relaxed text-sm">
                   Get notified when I publish new articles about AI engineering and machine learning systems.
                 </p>
-                <a 
-                  href="mailto:utkarshkanwat@gmail.com?subject=Newsletter Subscription"
-                  className="inline-flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors font-medium text-sm"
-                >
-                  Subscribe via email
-                </a>
+                 <Newsletter />
               </div>
             </div>
           </section>

@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Github, Linkedin, Mail, ExternalLink, ChevronLeft, ChevronRight, Calendar, Clock, ArrowUpRight } from "lucide-react";
+import { Menu, X } from 'lucide-react'
+
 
 interface Research {
   title: string;
@@ -248,30 +250,84 @@ function ImageGallery({ images, projectName }: ImageGalleryProps) {
 }
 
 export default function Home() {
+
+// Add this to your main page component
+const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="border-b border-slate-100 sticky top-0 bg-white/95 backdrop-blur-sm z-10">
-        <div className="max-w-6xl mx-auto px-8 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-xl font-semibold text-slate-900 tracking-tight">Utkarsh Kanwat</h1>
-            <nav className="flex gap-6">
-              <a href="/writing" className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium border-b border-transparent hover:border-slate-400">
-                Writing
-              </a>
-              <a href="#projects" className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium border-b border-transparent hover:border-slate-400">
-                Projects
-              </a>
-              <a href="#experience" className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium border-b border-transparent hover:border-slate-400">
-                Experience
-              </a>
-              <a href="#research" className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium border-b border-transparent hover:border-slate-400">
-                Research
-              </a>
-            </nav>
-          </div>
+<header className="border-b border-slate-100 sticky top-0 bg-white/95 backdrop-blur-sm z-10">
+  <div className="max-w-6xl mx-auto px-4 sm:px-8 py-4">
+    <div className="flex items-center justify-between">
+      <h1 className="text-lg sm:text-xl font-medium text-slate-900 tracking-tight">
+        Utkarsh Kanwat
+      </h1>
+      
+      {/* Desktop Navigation */}
+      <nav className="hidden md:flex gap-6">
+        <a href="/writing" className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium border-b border-transparent hover:border-slate-400">
+          Writing
+        </a>
+        <a href="#projects" className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium border-b border-transparent hover:border-slate-400">
+          Projects
+        </a>
+        <a href="#experience" className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium border-b border-transparent hover:border-slate-400">
+          Experience
+        </a>
+        <a href="#research" className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium border-b border-transparent hover:border-slate-400">
+          Research
+        </a>
+      </nav>
+
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        className="md:hidden p-2 text-slate-600 hover:text-slate-900 transition-colors"
+      >
+        {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+      </button>
+    </div>
+
+    {/* Mobile Navigation */}
+    {mobileMenuOpen && (
+      <nav className="md:hidden mt-4 pb-4 border-t border-slate-100 pt-4">
+        <div className="flex flex-col space-y-3">
+          <a 
+            href="/writing" 
+            className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium py-2"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Writing
+          </a>
+          <a 
+            href="#projects" 
+            className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium py-2"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Projects
+          </a>
+          <a 
+            href="#experience" 
+            className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium py-2"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Experience
+          </a>
+          <a 
+            href="#research" 
+            className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium py-2"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Research
+          </a>
         </div>
-      </header>
+      </nav>
+    )}
+  </div>
+</header>
+
 
       <div className="max-w-6xl mx-auto px-8">
         {/* Hero Section */}
@@ -282,7 +338,7 @@ export default function Home() {
                 Building intelligent systems that understand and adapt
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed">
-                AI Engineerdeveloping LLM optimization frameworks, RAG systems, and scalable ML platforms. 
+                AI Engineer developing LLM optimization frameworks, RAG systems, and scalable ML platforms. 
                 I have academic research background in computer vision and medical imaging from IIT Bombay.
               </p>
             </div>

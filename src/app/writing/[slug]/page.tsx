@@ -5,7 +5,8 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { ArrowLeft, Calendar, Clock, Tag, ExternalLink, Mail } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Tag, ExternalLink, Mail, MessageCircle } from "lucide-react";
+import Comments from "../../components/Comments";
 
 // Generate static params for all blog posts
 export async function generateStaticParams() {
@@ -313,96 +314,19 @@ export default async function BlogPost({ params }: PageProps) {
                 </div>
               )}
 
-              {/* Navigation */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <Link 
-                  href="/writing"
-                  className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors group"
-                >
-                  <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
-                  <span className="font-medium text-sm">More articles</span>
-                </Link>
 
-                <div className="flex items-center gap-4 text-xs">
-                  <Link 
-                    href="/"
-                    className="text-slate-600 hover:text-slate-900 transition-colors font-medium"
-                  >
-                    Homepage
-                  </Link>
-                  <span className="text-slate-300">•</span>
-                  <a 
-                    href={`mailto:utkarshkanwat@gmail.com?subject=About your article: ${post.title}`}
-                    className="text-blue-600 hover:text-blue-700 transition-colors font-medium"
-                  >
-                    Discuss this article
-                  </a>
-                </div>
-              </div>
             </div>
           </footer>
         </main>
 
-        {/* Engagement Section */}
-        <section className="py-10 border-t border-slate-100">
-          <div className="bg-slate-50/50 rounded-xl p-6 border border-slate-100">
-            <div className="text-center space-y-4 max-w-2xl mx-auto">
-              <h3 className="text-lg font-medium text-slate-900">
-                Found this helpful?
-              </h3>
-              <p className="text-slate-600 leading-relaxed text-sm">
-                I write about AI systems, machine learning engineering, and lessons from building production applications. 
-                Feel free to reach out if you have questions or want to discuss these topics further.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-                <a 
-                  href={`mailto:utkarshkanwat@gmail.com?subject=Discussion about: ${post.title}`}
-                  className="inline-flex items-center justify-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors font-medium text-sm"
-                >
-                  <Mail className="w-4 h-4" />
-                  Start a discussion
-                </a>
-                <Link 
-                  href="/writing"
-                  className="inline-flex items-center justify-center gap-2 border border-slate-200 text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors font-medium text-sm"
-                >
-                  Read more articles
-                </Link>
-              </div>
-            </div>
+        {/* Comments Section */}
+        <section id="comments" className="py-12 border-t border-slate-100">
+          <div className="space-y-6">
+            <h3 className="text-lg font-medium text-slate-900">Discussion</h3>
+            <Comments />
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="py-12 border-t border-slate-100 mt-6">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div className="space-y-0.5">
-              <p className="text-slate-600 text-sm">© 2024 Utkarsh Kanwat</p>
-              <p className="text-xs text-slate-500">AI Engineer at ANZ Bank</p>
-            </div>
-            
-            <div className="flex gap-6 text-xs">
-              <Link 
-                href="/"
-                className="text-slate-600 hover:text-slate-900 transition-colors font-medium"
-              >
-                Homepage
-              </Link>
-              <Link 
-                href="/writing"
-                className="text-slate-600 hover:text-slate-900 transition-colors font-medium"
-              >
-                All articles
-              </Link>
-              <a 
-                href="mailto:utkarshkanwat@gmail.com"
-                className="text-slate-600 hover:text-slate-900 transition-colors font-medium"
-              >
-                Contact
-              </a>
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
   );
