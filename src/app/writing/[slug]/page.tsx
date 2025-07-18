@@ -17,8 +17,10 @@ export async function generateStaticParams() {
 }
 
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
+
+
 
 // Custom components for ReactMarkdown
 const MarkdownComponents = {
@@ -208,8 +210,8 @@ const MarkdownComponents = {
 };
 
 export default async function BlogPost({ params }: PageProps) {
-  params = await params;
-  const post = getPostBySlug(params.slug);
+
+  const post = getPostBySlug((await params).slug);
   
   if (!post) {
     notFound();
