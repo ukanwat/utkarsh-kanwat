@@ -1,11 +1,6 @@
-import OpenAI from 'openai';
 import { NextResponse } from 'next/server';
-export const runtime = 'edge';
 
-const client = new OpenAI({
-  baseURL: "https://api.llm7.io/v1",
-  apiKey: "unused"
-});
+export const runtime = 'edge';
 
 export async function POST(request: Request) {
   try {
@@ -34,18 +29,31 @@ INSTRUCTIONS:
 
 Example tone: "I've built 12+ agent systems at ANZ, and the biggest lesson is that error rates compound exponentially. When I implemented our database agent, the first version had 95% accuracy per step, but by step 10 we were down to 60% success rate. That's when I learned..."`;
 
-    const completion = await client.chat.completions.create({
-      model: "gpt-4.1-nano-2025-04-14",
-      messages: [
-        { role: "system", content: systemPrompt },
-        ...messages
-      ],
-      max_tokens: 600,
-      temperature: 0.7,
+    const response = await fetch('https://api.llm7.io/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer unused',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: "gpt-4.1-nano-2025-04-14",
+        messages: [
+          { role: "system", content: systemPrompt },
+          ...messages
+        ],
+        max_tokens: 600,
+        temperature: 0.7,
+      }),
     });
 
-    return NextResponse.json({ 
-      content: completion.choices[0].message.content 
+    if (!response.ok) {
+      throw new Error(`API request failed: ${response.status}`);
+    }
+
+    const completion = await response.json();
+    
+    return NextResponse.json({
+      content: completion.choices[0].message.content
     });
   } catch (error) {
     console.error('Error generating completion:', error);
