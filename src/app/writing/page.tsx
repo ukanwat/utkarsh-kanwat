@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, Tag, ArrowUpRight } from "lucide-react";
 import { getAllPosts, PostFrontMatter } from "../lib/posts";
+import { writingMetadata } from "../lib/metadata";
 import Newsletter from "../components/Newsletter";
 import Header from "../components/Header";
+
+export const metadata = writingMetadata;
 
 export default function Writing() {
   const posts = getAllPosts();
@@ -17,7 +20,7 @@ export default function Writing() {
         {/* Hero Section */}
         <section className="py-12">
           <div className="max-w-4xl space-y-4">
-            <h1 className="text-3xl font-medium text-slate-900 leading-snug tracking-tight">
+            <h1 className="text-3xl font-medium text-slate-900 leading-snug tracking-tight font-crimson">
               Writing
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed max-w-3xl">
@@ -60,7 +63,7 @@ export default function Writing() {
                     
                     {/* Title and description */}
                     <div className="space-y-3">
-                      <h2 className="text-xl font-medium text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                      <h2 className="text-xl font-medium text-slate-900 group-hover:text-blue-600 transition-colors leading-snug font-crimson">
                         <Link href={`/writing/${posts[0].slug}`}>
                           {posts[0].title}
                         </Link>
@@ -109,7 +112,7 @@ export default function Writing() {
               {/* Other Posts */}
               {posts.slice(1).length > 0 && (
                 <div className="space-y-8">
-                  <h3 className="text-lg font-medium text-slate-900 pt-6">More Articles</h3>
+                  <h3 className="text-lg font-medium text-slate-900 pt-6 font-crimson">More Articles</h3>
                   
                   <div className="space-y-6">
                     {posts.slice(1).map((post) => (
@@ -140,7 +143,7 @@ export default function Writing() {
                           
                           {/* Title and description */}
                           <div className="space-y-2">
-                            <h3 className="text-lg font-medium text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                            <h3 className="text-lg font-medium text-slate-900 group-hover:text-blue-600 transition-colors leading-snug font-crimson">
                               <Link href={`/writing/${post.slug}`}>
                                 {post.title}
                               </Link>
@@ -193,7 +196,7 @@ export default function Writing() {
                   <Tag className="w-6 h-6 text-slate-400" />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-lg font-medium text-slate-900">No articles yet</h3>
+                  <h3 className="text-lg font-medium text-slate-900 font-crimson">No articles yet</h3>
                   <p className="text-slate-600 leading-relaxed text-sm">
                     Working on content about AI systems, machine learning engineering, and lessons from production environments. 
                     Check back soon for insights and technical deep-dives.
@@ -218,7 +221,7 @@ export default function Writing() {
           <section className="py-10 border-t border-slate-100">
             <div className="bg-slate-50/50 rounded-xl p-6 text-center border border-slate-100">
               <div className="space-y-4 max-w-lg mx-auto">
-                <h3 className="text-lg font-medium text-slate-900">Stay updated</h3>
+                <h3 className="text-lg font-medium text-slate-900 font-crimson">Stay updated</h3>
                 <p className="text-slate-600 leading-relaxed text-sm">
                   Get notified when I publish new articles about AI engineering and machine learning systems.
                 </p>

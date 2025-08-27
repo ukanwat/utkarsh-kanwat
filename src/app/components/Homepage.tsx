@@ -6,164 +6,7 @@ import { Github, Linkedin, Mail, ExternalLink, ChevronLeft, ChevronRight, Calend
 import { Menu, X } from 'lucide-react'
 import { getAllPosts, PostFrontMatter } from "../lib/posts";
 
-interface Research {
-  title: string;
-  authors: string[];
-  affiliations: { [key: string]: string };
-  venue: string;
-  year: string;
-  location: string;
-  abstract: string;
-  topics: string[];
-  doi: string;
-  pages: string;
-  isbn: string;
-  publisher: string;
-}
-
-// TypeScript interfaces
-interface ProjectLink {
-  url: string;
-  label: string;
-}
-
-interface Project {
-  name: string;
-  description: string;
-  techStack: string[];
-  links: {
-    github: ProjectLink | null;
-    demo: ProjectLink | null;
-  };
-  images: string[];
-  date: string;
-  category: string;
-  featured?: boolean;
-}
-
-interface Experience {
-  role: string;
-  company: string;
-  duration: string;
-  achievements: string[];
-}
-
-const projects: Project[] = [
-  {
-    name: "Genbase",
-    description: "Open-source platform for modular AI agent orchestration with Docker containers, FastAPI gateway, and vector database integration.",
-    techStack: ["Docker", "FastAPI", "PostgreSQL", "React", "TypeScript", "Vector DB"],
-    links: {
-      github: { url: "https://github.com/genbase-project/genbase", label: "View Source" },
-      demo: null
-    },
-    images: ["/projects/genbase-ss.png"],
-    date: "2024",
-    category: "AI Platform",
-    featured: true
-  },
-  {
-    name: "Vikray",
-    description: "B2B agricultural marketplace connecting retailers and distributors with mobile apps and comprehensive web platform.",
-    techStack: ["Flutter", "Next.js", "GraphQL", "PostgreSQL", "AWS", "Terraform"],
-    links: {
-      github: null,
-      demo: { url: "https://play.google.com/store/apps/details?id=com.vikray", label: "Download App" }
-    },
-    images: ["/projects/vikray-homepage.png", "/projects/vikray-product.png"],
-    date: "2024",
-    category: "E-commerce",
-    featured: true
-  },
-  {
-    name: "Stark", 
-    description: "Full-featured microblogging social platform with real-time messaging, content feeds, and cross-platform mobile support.",
-    techStack: ["React", "Flutter", "Node.js", "GraphQL", "PostgreSQL", "GCP"],
-    links: {
-      github: { url: "https://github.com/ukanwat/stark", label: "View Source" },
-      demo: null
-    },
-    images: ["/projects/stark-app.png"],
-    date: "2024",
-    category: "Social Platform",
-    featured: true
-  },
-  {
-    name: "ScriptGPT",
-    description: "AI-powered development automation tool that generates functional TypeScript/JavaScript features from natural language descriptions.",
-    techStack: ["TypeScript", "OpenAI API", "Node.js", "CLI Tools"],
-    links: {
-      github: { url: "https://github.com/ukanwat/ScriptGPT", label: "View Source" },
-      demo: null
-    },
-    images: ["/projects/scriptgpt.png"],
-    date: "2024",
-    category: "Dev Tools",
-    featured: true
-  }
-];
-
-const research: Research[] = [
-  {
-    title: "Combining Datasets with Different Label Sets for Improved Nucleus Segmentation and Classification",
-    authors: [
-              "Utkarsh Kanwat¹",
-      "Amruta Parulekar¹", 
- 
-      "Ravi Gupta¹", 
-      "Medha Chippa¹", 
-      "Thomas Jacob¹", 
-      "Tripti Bameta²", 
-      "Swapnil Rane²", 
-      "Amit Sethi¹"
-    ],
-    affiliations: {
-      "¹": "Indian Institute of Technology Bombay, Mumbai, India",
-      "²": "Tata Memorial Centre-ACTREC (HBNI), Mumbai, India"
-    },
-    venue: "17th International Joint Conference on Biomedical Engineering Systems and Technologies",
-    year: "2024",
-    location: "Rome, Italy",
-    abstract: "Segmentation and classification of cell nuclei using deep neural networks (DNNs) can save pathologists' time for diagnosing various diseases, including cancers. The accuracy of DNNs increases with the sizes of annotated datasets available for training. The available public datasets with nuclear annotations and labels differ in their class label sets. We propose a method to train DNNs on multiple datasets where the set of classes across the datasets are related but not the same. Our method is designed to utilize class hierarchies, where the set of classes in a dataset can be at any level of the hierarchy. Our results demonstrate that segmentation and classification metrics for the class set used by the test split of a dataset can improve by pre-training on another dataset that may even have a different set of classes due to the expansion of the training set enabled by our method.",
-    topics: [
-      "Applications of Machine Learning",
-      "Deep Learning in Bioimaging", 
-      "Histology and Tissue Imaging",
-      "Medical Imaging and Diagnosis"
-    ],
-    doi: "10.5220/0012380800003657",
-    pages: "281-288",
-    isbn: "978-989-758-688-0",
-    publisher: "SciTePress"
-  }
-];
-
-const experiences: Experience[] = [
-  {
-    role: "Engineer",
-    company: "ANZ",
-    duration: "Jun 2023 - Present",
-    achievements: [
-      "Fine-tuning Gemini models on documentation, achieving 18% improvement in answer relevance", 
-      "Building production RAG systems with vector databases for context-aware AI responses across applications",
-      "Built enterprise data mediation platform using Node.js and Python, replacing legacy IBM DataPower infrastructure",
-      "Architected automated deployment pipeline for 180+ microservices, eliminating 900+ hours of manual testing monthly",
-      "Deployed services across multi-cloud environments (AWS, GCP, OpenShift) using Terraform and Kubernetes",
-      "Implementing intelligent query caching and optimization strategies, reducing API costs by 30%",
-      "Led team to victory in Global Generative AI Hackathon, developing LLM-powered task optimization bot",
-    ]
-  },
-  {
-    role: "ML Research Assistant",
-    company: "MeDAL Lab, IIT Bombay",
-    duration: "Mar 2022 - Jun 2023",
-    achievements: [
-      "Achieved 28% performance improvement in cell nucleus segmentation algorithms",
-      "Published research at international conference on medical image analysis",
-      "Developed deep learning models for automated histopathology classification"
-    ]
-  }
-];
+import { projects, experiences, research } from "../data";
 
 // Image Gallery Component
 interface ImageGalleryProps {
@@ -264,7 +107,7 @@ export default function Homepage({ latestPost }: HomepageProps) {
 <header className="border-b border-slate-100 sticky top-0 bg-white/95 backdrop-blur-sm z-10">
   <div className="max-w-6xl mx-auto px-4 sm:px-8 py-4">
     <div className="flex items-center justify-between">
-      <h1 className="text-lg sm:text-xl font-medium text-slate-900 tracking-tight">
+      <h1 className="text-lg sm:text-xl font-medium text-slate-900 tracking-tight font-crimson">
         Utkarsh Kanwat
       </h1>
       
@@ -337,7 +180,7 @@ export default function Homepage({ latestPost }: HomepageProps) {
         <section className="py-12">
           <div className="max-w-4xl space-y-6">
             <div className="space-y-4">
-              <h2 className="text-3xl font-medium text-slate-900 leading-snug tracking-tight">
+              <h2 className="text-3xl font-medium text-slate-900 leading-snug tracking-tight font-crimson">
                 Building intelligent systems that understand and adapt
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed">
@@ -380,7 +223,7 @@ export default function Homepage({ latestPost }: HomepageProps) {
 <section id="writing" className="py-12">
   <div className="space-y-8">
     <div className="flex items-center justify-between">
-      <h3 className="text-2xl font-medium text-slate-900">Latest Writing</h3>
+      <h3 className="text-2xl font-medium text-slate-900 font-crimson">Latest Writing</h3>
       <Link 
         href="/writing"
         className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors group text-sm font-medium"
@@ -417,7 +260,7 @@ export default function Homepage({ latestPost }: HomepageProps) {
           </div>
           
           <div className="space-y-3">
-            <h4 className="text-xl font-medium text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+            <h4 className="text-xl font-medium text-slate-900 group-hover:text-blue-600 transition-colors leading-snug font-crimson">
               <Link href={`/writing/${latestPost.slug}`}>
                 {latestPost.title}
               </Link>
@@ -461,7 +304,7 @@ export default function Homepage({ latestPost }: HomepageProps) {
       /* No posts state */
       <div className="border border-slate-100 rounded-xl p-6 bg-slate-50/30 text-center">
         <div className="space-y-3">
-          <h4 className="text-lg font-medium text-slate-900">Coming Soon</h4>
+          <h4 className="text-lg font-medium text-slate-900 font-crimson">Coming Soon</h4>
           <p className="text-slate-600 text-sm">
             Working on articles about AI systems, machine learning engineering, and development insights.
           </p>
@@ -481,7 +324,7 @@ export default function Homepage({ latestPost }: HomepageProps) {
         {/* Projects */}
         <section id="projects" className="py-12">
           <div className="space-y-10">
-            <h3 className="text-2xl font-medium text-slate-900">Selected Projects</h3>
+            <h3 className="text-2xl font-medium text-slate-900 font-crimson">Selected Projects</h3>
             
             <div className="space-y-16">
               {projects.filter(p => p.featured).map((project, index) => (
@@ -495,7 +338,7 @@ export default function Homepage({ latestPost }: HomepageProps) {
                   <div className={`lg:col-span-3 space-y-4 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <h4 className="text-xl font-medium text-slate-900">{project.name}</h4>
+                        <h4 className="text-xl font-medium text-slate-900 font-crimson">{project.name}</h4>
                         <span className="px-2 py-1 text-xs font-medium bg-slate-100 text-slate-700 rounded-full">
                           {project.category}
                         </span>
@@ -551,7 +394,7 @@ export default function Homepage({ latestPost }: HomepageProps) {
         {/* Experience */}
         <section id="experience" className="py-12">
           <div className="space-y-10">
-            <h3 className="text-2xl font-medium text-slate-900">Experience</h3>
+            <h3 className="text-2xl font-medium text-slate-900 font-crimson">Experience</h3>
             
             <div className="space-y-8">
               {experiences.map((exp, index) => (
@@ -581,7 +424,7 @@ export default function Homepage({ latestPost }: HomepageProps) {
         {/* Research Section */}
         <section id="research" className="py-12">
           <div className="space-y-10">
-            <h3 className="text-2xl font-medium text-slate-900">Research</h3>
+            <h3 className="text-2xl font-medium text-slate-900 font-crimson">Research</h3>
             
             <div className="space-y-6">
               {research.map((paper, index) => (
@@ -589,7 +432,7 @@ export default function Homepage({ latestPost }: HomepageProps) {
                   <div className="space-y-5">
                     {/* Title and Conference */}
                     <div className="space-y-2">
-                      <h4 className="text-lg font-medium text-slate-900 leading-snug">
+                      <h4 className="text-lg font-medium text-slate-900 leading-snug font-crimson">
                         {paper.title}
                       </h4>
                       <div className="space-y-1">

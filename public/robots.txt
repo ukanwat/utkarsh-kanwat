@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://utkarshkanwat.com
+
+# Sitemaps
+Sitemap: https://utkarshkanwat.com/sitemap.xml

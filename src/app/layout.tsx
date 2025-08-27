@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Crimson_Text } from "next/font/google";
+import { baseMetadata } from "./lib/metadata";
+import AIChat from "./components/AIChat";  // Add this import
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,19 +14,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Utkarsh Kanwat",
-  description: "Engineer enjoy working on intelligent systems, LLM optimization, and scalable ML platforms. Graduate from IIT Bombay with expertise in deep learning and production systems.",
-  keywords: ["Engineer", "Machine Learning", "Deep Learning", "Thought Leadership", "LLM", "AI Systems"],
-  authors: [{ name: "Utkarsh Kanwat" }],
-  creator: "Utkarsh Kanwat",
-  openGraph: {
-    title: "Utkarsh Kanwat",
-    description: "Engineer enjoy working on intelligent systems, LLM optimization, and scalable Systems.",
-    type: "website",
-    locale: "en_US",
-  }
-};
+const crimsonText = Crimson_Text({
+  variable: "--font-crimson",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
+
+export const metadata: Metadata = baseMetadata;
 
 export default function RootLayout({
   children,
@@ -33,13 +29,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      
+      <head>
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-slate-900`}
+        className={`${geistSans.variable} ${geistMono.variable} ${crimsonText.variable} antialiased bg-white text-slate-900`}
       >
         {children}
-
-        
+        <AIChat />  {/* Add this line */}
       </body>
     </html>
   );

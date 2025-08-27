@@ -1,5 +1,8 @@
 import { getAllPosts } from "./lib/posts";
+import { homeMetadata } from "./lib/metadata";
 import Homepage from "./components/Homepage";
+
+export const metadata = homeMetadata;
 
 export default function Home() {
   const posts = getAllPosts();

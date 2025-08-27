@@ -141,7 +141,7 @@ const MarkdownComponents = {
   
   h1({ children }: any) {
     return (
-      <h1 className="text-2xl font-medium mt-10 mb-6 pb-4 border-b border-slate-200 text-slate-900 first:mt-0 leading-snug">
+      <h1 className="text-2xl font-medium mt-10 mb-6 pb-4 border-b border-slate-200 text-slate-900 first:mt-0 leading-snug font-crimson">
         {children}
       </h1>
     );
@@ -149,7 +149,7 @@ const MarkdownComponents = {
   
   h2({ children }: any) {
     return (
-      <h2 className="text-xl font-medium mt-8 mb-4 text-slate-900 leading-snug">
+      <h2 className="text-xl font-medium mt-8 mb-4 text-slate-900 leading-snug font-crimson">
         {children}
       </h2>
     );
@@ -157,7 +157,7 @@ const MarkdownComponents = {
   
   h3({ children }: any) {
     return (
-      <h3 className="text-lg font-medium mt-6 mb-3 text-slate-900 leading-snug">
+      <h3 className="text-lg font-medium mt-6 mb-3 text-slate-900 leading-snug font-crimson">
         {children}
       </h3>
     );
@@ -165,7 +165,7 @@ const MarkdownComponents = {
 
   h4({ children }: any) {
     return (
-      <h4 className="text-base font-medium mt-5 mb-2 text-slate-900 leading-snug">
+      <h4 className="text-base font-medium mt-5 mb-2 text-slate-900 leading-snug font-crimson">
         {children}
       </h4>
     );
@@ -206,7 +206,7 @@ const MarkdownComponents = {
   
   blockquote({ children }: any) {
     return (
-      <blockquote className="border-l-4 border-blue-200 pl-6 py-3 my-6 bg-blue-50/50 italic text-slate-600 rounded-r-lg">
+      <blockquote className="border-l-4 border-blue-200 pl-6 py-3 my-6 bg-blue-50/50 italic text-slate-600 rounded-r-lg font-crimson">
         {children}
       </blockquote>
     );
@@ -347,7 +347,7 @@ export default async function BlogPost({ params }: PageProps) {
             </div>
             
             {/* Title */}
-            <h1 className="text-3xl font-medium text-slate-900 leading-snug tracking-tight">
+            <h1 className="text-3xl font-medium text-slate-900 leading-snug tracking-tight font-crimson">
               {post.title}
             </h1>
 
@@ -391,19 +391,6 @@ export default async function BlogPost({ params }: PageProps) {
           {/* Article Footer */}
           <footer className="mt-12 pt-8 border-t border-slate-200">
             <div className="space-y-6">
-              {/* Tags (repeated for discoverability) */}
-              {post.tags && post.tags.length > 0 && (
-                <div className="flex flex-wrap gap-1.5">
-                  {post.tags.map((tag) => (
-                    <span 
-                      key={tag}
-                      className="px-2 py-1 text-xs bg-slate-100 text-slate-700 rounded-md border border-slate-200"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
 
               {/* Share Again in Footer */}
               <div className="bg-slate-50/50 rounded-xl p-6 border border-slate-100">
@@ -421,7 +408,7 @@ export default async function BlogPost({ params }: PageProps) {
         {/* Comments Section */}
         <section id="comments" className="py-12 border-t border-slate-100">
           <div className="space-y-6">
-            <h3 className="text-lg font-medium text-slate-900">Discussion</h3>
+            <h3 className="text-lg font-medium text-slate-900 font-crimson">Discussion</h3>
             <Comments />
           </div>
         </section>
