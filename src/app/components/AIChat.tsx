@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect, useRef } from 'react';
-import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
+import { MessageCircle, X, Send, Loader2, Brain } from 'lucide-react';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -129,7 +129,7 @@ export default function AIDigitalTwin() {
         className="fixed bottom-8 right-8 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-full shadow-lg transition-colors z-50 flex items-center gap-2 font-medium text-sm"
         aria-label="Chat with AI Utkarsh"
       >
-        <MessageCircle className="w-4 h-4" />
+        <Brain className="w-4 h-4" />
         Ask My AI
       </button>
     );

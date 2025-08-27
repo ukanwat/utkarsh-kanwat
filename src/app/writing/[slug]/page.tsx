@@ -11,6 +11,7 @@ import Comments from "../../components/Comments";
 import Header from "@/app/components/Header";
 import SocialShare from "../../components/Share";
 
+
 // Generate static params for all blog posts
 export async function generateStaticParams() {
   const slugs = getPostSlugs();

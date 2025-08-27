@@ -9,10 +9,13 @@
     "lint": "next lint",
     "prepare": "husky",
     "postbuild": "next-sitemap",
-    "build:embeddings":"npx tsx scripts/generate-embeddings.ts"
-
+    "build:embeddings": "npx tsx scripts/generate-embeddings.ts",
+    "pages:build": "next build && npx @cloudflare/next-on-pages",
+    "pages:dev": "npx @cloudflare/next-on-pages --dev",
+    "preview": "npx wrangler pages dev .vercel/output/static --compatibility-date=2024-01-01"
   },
   "dependencies": {
+    "@cloudflare/next-on-pages": "^1.13.14",
     "@giscus/react": "^3.1.0",
     "dotenv": "^17.2.1",
     "gray-matter": "^4.0.3",

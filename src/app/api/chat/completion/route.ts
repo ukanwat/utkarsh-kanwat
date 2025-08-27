@@ -1,5 +1,6 @@
 import OpenAI from 'openai';
 import { NextResponse } from 'next/server';
+export const runtime = 'edge';
 
 const client = new OpenAI({
   baseURL: "https://api.llm7.io/v1",
