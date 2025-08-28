@@ -7,6 +7,8 @@ export async function POST(request: Request) {
   try {
     const { text } = await request.json();
 
+    console.log("env", process.env.OPENAI_API_KEY);
+
     const response = await fetch('https://api.openai.com/v1/embeddings', {
       method: 'POST',
       headers: {
