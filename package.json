@@ -12,7 +12,7 @@
     "build:embeddings": "npx tsx scripts/generate-embeddings.ts",
     "pages:build": "next build && npx @cloudflare/next-on-pages",
     "pages:dev": "npx @cloudflare/next-on-pages --dev",
-    "preview": "npx wrangler pages dev .vercel/output/static --compatibility-date=2024-01-01"
+    "preview": "npx wrangler pages dev .vercel/output/static --compatibility-date=2024-09-23"
   },
   "dependencies": {
     "@cloudflare/next-on-pages": "^1.13.14",
