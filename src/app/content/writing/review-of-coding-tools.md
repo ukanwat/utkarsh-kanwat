@@ -6,8 +6,6 @@ tags: ["AI", "JavaScript", "Developer Tools", "Productivity", "Code Generation",
 published: true
 ---
 
-# I Tested AI Coding Tools So You Don't Have To: Here's What Actually Works
-
 As someone who has spent a considerable amount of time in the Software industry. Over time, I've always been on the lookout for tools and techniques that can help me:
 
 - Boost my productivity

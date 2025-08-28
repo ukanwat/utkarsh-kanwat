@@ -1,15 +1,18 @@
 import { NextResponse } from 'next/server';
+import { getRequestContext } from '@cloudflare/next-on-pages'
 
 export const runtime = 'edge';
 
 export async function POST(request: Request) {
+    const { env } = getRequestContext()
+
   try {
     const { text } = await request.json();
 
     const response = await fetch('https://api.openai.com/v1/embeddings', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+        'Authorization': `Bearer ${(env as any).OPENAI_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
