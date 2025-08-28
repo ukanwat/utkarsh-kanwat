@@ -29,7 +29,7 @@ export default function AIDigitalTwin() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'assistant',
-      content: "I'm Utkarsh's digital twin, an AI designed to speak with his expertise, experience, and perspective. Ask me about his projects, technical experience, or insights on AI systems."
+      content: "I'm an AI designed to speak with Utkarsh's expertise, experience, and perspective. Ask me about his projects, technical experience, or insights on AI systems."
     }
   ]);
   const [input, setInput] = useState('');
@@ -127,7 +127,7 @@ export default function AIDigitalTwin() {
       <button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-8 right-8 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-full shadow-lg transition-colors z-50 flex items-center gap-2 font-medium text-sm"
-        aria-label="Chat with AI Utkarsh"
+        aria-label="Chat with Utkarsh's AI"
       >
         <MessageCircle className="w-4 h-4" />
         Ask My AI
@@ -141,7 +141,7 @@ export default function AIDigitalTwin() {
       {/* Clean header */}
       <div className="border-b border-slate-100 p-6 flex items-center justify-between">
         <div>
-          <h3 className="font-medium text-slate-900 text-lg font-crimson">Chat with Utkarsh</h3>
+          <h3 className="font-medium text-slate-900 text-lg font-crimson">Chat with Utkarsh's AI</h3>
           <p className="text-slate-600 text-sm mt-1">Ask about my projects, experience, and insights</p>
         </div>
         <button
@@ -168,7 +168,7 @@ export default function AIDigitalTwin() {
         {isLoading && (
           <div className="space-y-1">
             <div className="text-xs font-medium text-slate-500 tracking-wide uppercase">
-              Utkarsh
+              Utkarsh's AI
             </div>
             <div className="flex items-center gap-2 text-slate-600">
               <Loader2 className="w-4 h-4 animate-spin" />
